@@ -85,11 +85,13 @@ public class SerialClass {
         comport.openPort();
         InputStream in = comport.getInputStream();
         int gelopencounter = 0;
+        int buffersize = in.available();
+        in.skipNBytes( buffersize -1);
         if (in.available() != 0){
             gelopencounter = in.read();
         }
         comport.closePort();
-        return gelopencounter;
+        return gelopencounter + 1;
 
     }
     private String getOperatingSystem() {

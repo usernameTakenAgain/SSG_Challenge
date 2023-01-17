@@ -156,7 +156,7 @@ public class HetScherm {
                 System.out.println("Hier wordt er verbinding gemaakt met de microbit");
                 SerialClass SerialClass;
                 SerialClass SerialClassInstance = new SerialClass();
-                SerialPort port = SerialClassInstance.init(); // Alle setup voor het uitlezen van de gegevens
+                SerialPort port = SerialClassInstance.init();
 
                 /*
                 Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
