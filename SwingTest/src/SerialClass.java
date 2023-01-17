@@ -1,5 +1,6 @@
+package SwingTest.src;
+
 import com.fazecast.jSerialComm.*;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -79,7 +80,7 @@ public class SerialClass {
     }
 
 
-    public int leesGegevens(@NotNull SerialPort comport) throws IOException {
+    public int leesGegevens(SerialPort comport) throws IOException {
         // Lees eerst eerste gegevens als int
         // Daarna pas tweede, enzovoort
         InputStream in = comport.getInputStream();

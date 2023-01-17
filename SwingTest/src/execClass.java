@@ -1,3 +1,5 @@
+package SwingTest.src;
+
 import com.fazecast.jSerialComm.*;
 import java.io.IOException;
 
