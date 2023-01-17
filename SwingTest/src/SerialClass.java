@@ -52,7 +52,6 @@ public class SerialClass {
     public SerialPort init() {
         // Selecteer de juiste comport voor de microbit
         // Het object van de klasse SerialPort dat je terugkrijgt moet je meegeven aan andere functies
-        // TODO: Windows comaptible maken (met if selectie voor platform independend)
         SerialPort comPort = null;
         if (getOperatingSystem().equals("Linux")) {
             System.out.println(Arrays.toString(SerialPort.getCommPorts()));
@@ -83,11 +82,13 @@ public class SerialClass {
     public int leesGegevens(SerialPort comport) throws IOException {
         // Lees eerst eerste gegevens als int
         // Daarna pas tweede, enzovoort
+        comport.openPort();
         InputStream in = comport.getInputStream();
         int gelopencounter = 0;
         if (in.available() != 0){
             gelopencounter = in.read();
         }
+        comport.closePort();
         return gelopencounter;
 
     }

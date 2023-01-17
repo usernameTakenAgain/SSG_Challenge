@@ -1,3 +1,4 @@
+import SwingTest.src.SerialClass;
 import org.jfree.chart.ui.UIUtils;
 
 import javax.swing.*;
@@ -6,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
+import com.fazecast.jSerialComm.*;
 
 public class HetScherm {
 
@@ -151,6 +154,23 @@ public class HetScherm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Hier wordt er verbinding gemaakt met de microbit");
+                SerialClass SerialClass;
+                SerialClass SerialClassInstance = new SerialClass();
+                SerialPort port = SerialClassInstance.init(); // Alle setup voor het uitlezen van de gegevens
+
+                /*
+                Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
+                resultaat is hoeveel seconden er uiteindelijk is gelopen
+                Andere dingen die we kunnen meten zijn nog niet geimplementeerd
+                 */
+                int resultaat;
+                try {
+                    resultaat = SerialClassInstance.leesGegevens(port);
+                } catch (IOException e2) {
+                    throw new RuntimeException(e2);
+                }
+                System.out.println(resultaat);
+                // TODO: hier het resultaat in de DB zetten
             }
         });
 
