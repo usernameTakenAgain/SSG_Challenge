@@ -191,7 +191,7 @@ public class HetScherm {
                  Graph TestGraph = new Graph("Lopen");
                  TestGraph.createGraph(MainUser);
                  HomePage.setVisible(false);
-                 TestGraph.setDefaultCloseOperation(TestGraph.DISPOSE_ON_CLOSE);
+                 TestGraph.setDefaultCloseOperation(TestGraph.HIDE_ON_CLOSE);
             }
         });
 
