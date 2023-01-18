@@ -49,7 +49,7 @@ public class SerialClass {
         }
         //comPort.closePort();
     } 
-    public SerialPort init() {
+    private SerialPort init() {
         // Selecteer de juiste comport voor de microbit
         // Het object van de klasse SerialPort dat je terugkrijgt moet je meegeven aan andere functies
         SerialPort comPort = null;

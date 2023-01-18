@@ -173,24 +173,26 @@ public class HetScherm {
                 try {
                     resultaat = SerialClassInstance.leesGegevensPogingTwee();
                     System.out.println(resultaat);
-                    MySQLDB DBConnectie = new MySQLDB();
-                    DBConnectie.CreateLoopGedrag(resultaat,1);
 
                 } catch (IOException e2) {
                     JOptionPane.showMessageDialog(null, "U mag maar een keer per dag uw resulaten uploaden!",
                             "InfoBox: " + "Upload fout", JOptionPane.INFORMATION_MESSAGE);
                 }
+                // TODO: hier het resultaat in de DB zetten
+                LocalDateTime now = LocalDateTime.now();
+                MySQLDB DBConnectie = new MySQLDB();
+                DBConnectie.CreateLoopGedrag(1,1);
             }
         });
 
-        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
-        AnalyseerGegevens.setBounds(200, 600, 300, 40);
-        AnalyseerGegevens.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
-            }
-        });
+//        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
+//        AnalyseerGegevens.setBounds(200, 600, 300, 40);
+//        AnalyseerGegevens.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
+//            }
+//        });
 
         JButton Details = new JButton("Details");
         Details.setBounds(580,600,100,40);
@@ -216,7 +218,7 @@ public class HetScherm {
         });
 
         HomePage.add(Details);
-        HomePage.add(AnalyseerGegevens);
+        //HomePage.add(AnalyseerGegevens);
         HomePage.add(ingevuldeNaam);
         HomePage.add(SchermTitel);
         HomePage.add(verbindenKnop);
