@@ -161,8 +161,6 @@ public class HetScherm {
                 System.out.println("Hier wordt er verbinding gemaakt met de microbit");
                 SerialClass SerialClass;
                 SerialClass SerialClassInstance = new SerialClass();
-                //SerialPort port = SerialClassInstance.init();
-
                 /*
                 Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
                 resultaat is hoeveel seconden er uiteindelijk is gelopen
@@ -218,7 +216,6 @@ public class HetScherm {
         });
 
         HomePage.add(Details);
-        //HomePage.add(AnalyseerGegevens);
         HomePage.add(ingevuldeNaam);
         HomePage.add(SchermTitel);
         HomePage.add(verbindenKnop);
