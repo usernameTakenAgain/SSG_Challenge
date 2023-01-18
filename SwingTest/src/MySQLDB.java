@@ -58,4 +58,14 @@ public class MySQLDB {
             System.out.println(e);
         }
     }
+
+    public void GetLoopGedrag(){
+        try{
+            statement = connection.createStatement();
+            String query = "select * from gewoontes where datum between date_sub(now(),INTERVAL 1 WEEK) and now() order by datum desc limit 5 ;";
+            resultSet = statement.executeQuery(query);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
 } // class ends
