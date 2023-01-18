@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import com.fazecast.jSerialComm.*;
 
@@ -153,35 +158,38 @@ public class HetScherm {
         verbindenKnop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Hier wordt er verbinding gemaakt met de microbit");
+                /*System.out.println("Hier wordt er verbinding gemaakt met de microbit");
                 SerialClass SerialClass;
                 SerialClass SerialClassInstance = new SerialClass();
-                SerialPort port = SerialClassInstance.init();
+                SerialPort port = SerialClassInstance.init();*/
 
                 /*
                 Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
                 resultaat is hoeveel seconden er uiteindelijk is gelopen
                 Andere dingen die we kunnen meten zijn nog niet geimplementeerd
                  */
-                int resultaat;
+                /*int resultaat;
                 try {
                     resultaat = SerialClassInstance.leesGegevens(port);
                 } catch (IOException e2) {
                     throw new RuntimeException(e2);
                 }
-                System.out.println(resultaat);
+                System.out.println(resultaat);*/
                 // TODO: hier het resultaat in de DB zetten
+                LocalDateTime now = LocalDateTime.now();
+                MySQLDB DBConnectie = new MySQLDB();
+                DBConnectie.CreateLoopGedrag(1,1);
             }
         });
 
-        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
-        AnalyseerGegevens.setBounds(200, 600, 300, 40);
-        AnalyseerGegevens.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
-            }
-        });
+//        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
+//        AnalyseerGegevens.setBounds(200, 600, 300, 40);
+//        AnalyseerGegevens.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
+//            }
+//        });
 
         JButton Details = new JButton("Details");
         Details.setBounds(580,600,100,40);
@@ -207,7 +215,7 @@ public class HetScherm {
         });
 
         HomePage.add(Details);
-        HomePage.add(AnalyseerGegevens);
+        //HomePage.add(AnalyseerGegevens);
         HomePage.add(ingevuldeNaam);
         HomePage.add(SchermTitel);
         HomePage.add(verbindenKnop);

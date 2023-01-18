@@ -33,9 +33,9 @@ public class Graph extends ApplicationFrame {
         demo.pack();
         UIUtils.centerFrameOnScreen(demo);
 
-        JButton Details = new JButton("Terug");
-        Details.setHorizontalAlignment(SwingConstants.LEFT);
-        Details.addActionListener(new ActionListener() {
+        JButton Terug = new JButton("Terug");
+        Terug.setHorizontalAlignment(SwingConstants.LEFT);
+        Terug.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 demo.setVisible(false);
@@ -43,7 +43,7 @@ public class Graph extends ApplicationFrame {
                 scherm.HomePage(user);
             }
         });
-        demo.add(Details);
+        demo.add(Terug);
         demo.setVisible(true);
 
     }

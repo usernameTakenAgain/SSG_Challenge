@@ -1,11 +1,12 @@
 import java.sql.*;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class MySQLDB {
 
     ResultSet resultSet;
     Statement statement;
     Connection connection = null;
-
+    PreparedStatement PreparedStatement;
 
 
     public MySQLDB(){
@@ -45,5 +46,16 @@ public class MySQLDB {
             connection.close();
         }
         catch (Exception e) {System.out.println(e);}
+    }
+
+    public void CreateLoopGedrag(int Stappen, int KoffieGehaald){
+        try{
+            statement = connection.createStatement();
+            String query = "insert into gewoontes (Datum, Stappen, KoffieGehaald) values(NOW(),"+Stappen+",  "+ KoffieGehaald+")";
+            int antwoord = statement.executeUpdate(query);
+            System.out.println(antwoord);
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 } // class ends
