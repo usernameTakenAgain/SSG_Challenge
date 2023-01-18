@@ -95,7 +95,7 @@ public class SerialClass {
 
     }
     public int leesGegevensPogingTwee() throws IOException {
-        SerialPort comPort = SerialPort.getCommPort("/dev/ttyACM1   ");
+        SerialPort comPort = init();
         comPort.setBaudRate(115200);
         comPort.openPort();
         InputStream in = comPort.getInputStream();
