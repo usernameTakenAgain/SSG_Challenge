@@ -94,6 +94,14 @@ public class SerialClass {
         return gelopencounter + 1;
 
     }
+    public int leesGegevensPogingTwee() throws IOException {
+        SerialPort comPort = SerialPort.getCommPort("/dev/ttyACM1   ");
+        comPort.setBaudRate(115200);
+        comPort.openPort();
+        InputStream in = comPort.getInputStream();
+        OutputStream out  = comPort.getOutputStream();
+        return in.read();
+    }
     private String getOperatingSystem() {
         return System.getProperty("os.name");
     }

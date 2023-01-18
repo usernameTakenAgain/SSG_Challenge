@@ -158,23 +158,26 @@ public class HetScherm {
         verbindenKnop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*System.out.println("Hier wordt er verbinding gemaakt met de microbit");
+                System.out.println("Hier wordt er verbinding gemaakt met de microbit");
                 SerialClass SerialClass;
                 SerialClass SerialClassInstance = new SerialClass();
-                SerialPort port = SerialClassInstance.init();*/
+                //SerialPort port = SerialClassInstance.init();
 
                 /*
                 Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
                 resultaat is hoeveel seconden er uiteindelijk is gelopen
                 Andere dingen die we kunnen meten zijn nog niet geimplementeerd
-                 */
-                /*int resultaat;
+                */
+
+                int resultaat;
                 try {
-                    resultaat = SerialClassInstance.leesGegevens(port);
+                    resultaat = SerialClassInstance.leesGegevensPogingTwee();
+                    System.out.println(resultaat);
+
                 } catch (IOException e2) {
-                    throw new RuntimeException(e2);
+                    JOptionPane.showMessageDialog(null, "U mag maar een keer per dag uw resulaten uploaden!",
+                            "InfoBox: " + "Upload fout", JOptionPane.INFORMATION_MESSAGE);
                 }
-                System.out.println(resultaat);*/
                 // TODO: hier het resultaat in de DB zetten
                 LocalDateTime now = LocalDateTime.now();
                 MySQLDB DBConnectie = new MySQLDB();
