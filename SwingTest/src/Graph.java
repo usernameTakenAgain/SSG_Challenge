@@ -11,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Graph extends ApplicationFrame {
+    public String[] rij;
+    List<String[]> tabel = new ArrayList<>();
     public Graph(String title) {
         super(title);
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -23,9 +26,8 @@ public class Graph extends ApplicationFrame {
         ResultSet Result = SqlConnectie.getResultSet();
         try {
             int colomen = Result.getMetaData().getColumnCount();
-            List<String[]> tabel = new ArrayList<>();
             while (Result.next()){
-                String[] rij = new String[colomen];
+                this.rij = new String[colomen];
                 for(int i = 1; i <= colomen; i++){
                     Object obj = Result.getObject(i);
                     rij[i-1] = (obj==null) ?null:obj.toString();
@@ -33,20 +35,15 @@ public class Graph extends ApplicationFrame {
                 tabel.add(rij);
 
             }
-            for (String[] row:tabel){
-                for (String s: row){
-                    System.out.println(" " + s);
-                }
-                System.out.println();
-            }
         }catch (Exception e){System.out.println(e);};
-
-        for (int i = 0; i <5; i++){
-            dataset.addValue(15, "Gelopen tijd", "22-12-2022");
+        for(int x = 0; x<5; x++){
+            String[] StringSplit = Arrays.toString(tabel.get(x)).split(",",-2);
+            dataset.addValue(Double.parseDouble(StringSplit[1].toString()), "Gelopen tijd", StringSplit[0].toString().substring(1,11));
         }
+
         JFreeChart chart = ChartFactory.createBarChart("\n \n Gelopen tijd in min", "Dag", "Tijd", dataset);
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new Dimension(900, 570));
+        chartPanel.setPreferredSize(new Dimension(1100, 570));
 
 
         this.setContentPane(chartPanel);

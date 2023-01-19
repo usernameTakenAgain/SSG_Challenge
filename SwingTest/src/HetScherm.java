@@ -25,6 +25,8 @@ public class HetScherm {
 
     public static void createScherm() {
 
+        //Hier wordt het eerste scherm gemaakt. Hier worden de persoons gegevens uit de database gelezen en in de labels geadd.
+        //Vervolgens kan de persoon ze aanpassen en wordt het weer naar de database gestuurd.
 
         JFrame hoofdScherm = new JFrame();//creating instance of JFrame
 
@@ -178,21 +180,23 @@ public class HetScherm {
                     JOptionPane.showMessageDialog(null, "U mag maar een keer per dag uw resulaten uploaden!",
                             "InfoBox: " + "Upload fout", JOptionPane.INFORMATION_MESSAGE);
                 }
-                // TODO: hier het resultaat in de DB zetten
-                LocalDateTime now = LocalDateTime.now();
+
                 MySQLDB DBConnectie = new MySQLDB();
                 DBConnectie.CreateLoopGedrag(1,1);
             }
         });
-
-//        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
-//        AnalyseerGegevens.setBounds(200, 600, 300, 40);
-//        AnalyseerGegevens.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
-//            }
-//        });
+        /*
+        Hier wordt de knop analyseer gegevens gemaakt. Tot nu toe heeft deze nog geen functionaliteit.
+        De knop zou een snelle gegevens tonen op de hoofdpagina.
+         */
+        JButton AnalyseerGegevens = new JButton("Analyseer gegevens");
+        AnalyseerGegevens.setBounds(200, 600, 300, 40);
+        AnalyseerGegevens.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Hier word de gegevens van vandaag laten zien in tekst");
+            }
+        });
 
         JButton Details = new JButton("Details");
         Details.setBounds(580,600,100,40);
@@ -206,6 +210,7 @@ public class HetScherm {
             }
         });
 
+        //Knop Persoonsgegevens wordt hier aangemaakt.
         String twoLines = "Persoons\ngegevens";
         JButton PersoonGegevensKnop = new JButton("<html>" + twoLines.replaceAll("\\n", "<br>") + "</html>");//creating instance of JButton
         PersoonGegevensKnop.setBounds(10, 10, 100, 100);//x-axis, y-axis, width, height
@@ -217,8 +222,9 @@ public class HetScherm {
             }
         });
 
+        //Hier worden alle details van de hoofdpagina and het frame toegevoegd.
         HomePage.add(Details);
-        //HomePage.add(AnalyseerGegevens);
+        HomePage.add(AnalyseerGegevens);
         HomePage.add(ingevuldeNaam);
         HomePage.add(SchermTitel);
         HomePage.add(verbindenKnop);
