@@ -52,21 +52,23 @@ public class Graph extends ApplicationFrame {
     }
 
     public void createGraph(Gebruiker user){
-        //Graph demo = new Graph("Lopen");
-        this.pack();
-        UIUtils.centerFrameOnScreen(this);
+        Graph demo = new Graph("Lopen");
+        demo.pack();
+        UIUtils.centerFrameOnScreen(demo);
 
         JButton Terug = new JButton("Terug");
         Terug.setHorizontalAlignment(SwingConstants.LEFT);
         Terug.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                demo.setVisible(false);
                 HetScherm scherm = new HetScherm();;
                 scherm.HomePage(user);
+
             }
         });
-        this.add(Terug);
-        this.setVisible(true);
+        demo.add(Terug);
+        demo.setVisible(true);
 
     }
 
