@@ -49,7 +49,7 @@ public class SerialClass {
         }
         //comPort.closePort();
     } 
-    private SerialPort init() {
+    public   SerialPort init() {
         // Selecteer de juiste comport voor de microbit
         // Het object van de klasse SerialPort dat je terugkrijgt moet je meegeven aan andere functies
         SerialPort comPort = null;
@@ -99,8 +99,11 @@ public class SerialClass {
         comPort.setBaudRate(115200);
         comPort.openPort();
         InputStream in = comPort.getInputStream();
-        OutputStream out  = comPort.getOutputStream();
-        return in.read();
+  //      in.readAllBytes();
+//        System.out.println("Reading woo@!!!!");
+        int a = in.read();
+        comPort.closePort();
+        return a;
     }
     private String getOperatingSystem() {
         return System.getProperty("os.name");

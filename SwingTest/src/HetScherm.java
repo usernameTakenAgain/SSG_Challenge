@@ -163,7 +163,7 @@ public class HetScherm {
                 System.out.println("Hier wordt er verbinding gemaakt met de microbit");
                 SerialClass SerialClass;
                 SerialClass SerialClassInstance = new SerialClass();
-                //SerialPort port = SerialClassInstance.init();
+                SerialPort port = SerialClassInstance.init();
 
                 /*
                 Alles Hierboven is setup om met de micro:bit te kunnen communiceren.
@@ -174,10 +174,12 @@ public class HetScherm {
                 int resultaat;
                 try {
                     resultaat = SerialClassInstance.leesGegevensPogingTwee();
+                    //resultaat = SerialClassInstance.leesGegevens(port);
                     System.out.println(resultaat);
 
                 } catch (IOException e2) {
-                    JOptionPane.showMessageDialog(null, "U mag maar een keer per dag uw resulaten uploaden!",
+                    System.out.println(e2);
+                    JOptionPane.showMessageDialog(null, "U mag maar een keer per dag uw resultaten uploaden!",
                             "InfoBox: " + "Upload fout", JOptionPane.INFORMATION_MESSAGE);
                 }
 
